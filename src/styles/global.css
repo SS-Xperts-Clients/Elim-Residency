@@ -937,6 +937,19 @@ textarea {
   background: rgba(255, 255, 255, 0.12);
   color: white;
 }
+.footer-actions {
+  display: inline-flex;
+  align-items: center;
+  justify-content: end;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.footer-share-message {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.88rem;
+  overflow-wrap: anywhere;
+}
 
 .bottom-action-bar {
   display: none;
@@ -1454,3 +1467,4 @@ textarea {
     display: none;
   }
 }
+

@@ -21,7 +21,7 @@ import {
 
 export const site = {
   name: 'Elim',
-  fullName: 'Elim student Residency',
+  fullName: 'Elim Student Residency',
   email: 'support@elimresidency.co.za',
   phone: '+27 73 139 0344',
   address: '89 Braam Pretorius Street, Wonderboom, Pretoria',
@@ -33,7 +33,7 @@ export const about = {
   eyebrow: 'About Elim',
   title: 'We Care About Student Success',
   paragraphs: [
-    'At Elim student Residency, we believe that every student deserves a comfortable place to call home.',
+    'At Elim Student Residency, we believe that every student deserves a comfortable place to call home.',
     'Our accommodation is designed to provide a peaceful, secure, and welcoming environment where students can study, grow, and build lifelong friendships.',
     'Our mission is to create more than just accommodation; we create a community.'
   ]
@@ -128,4 +128,5 @@ export const contactMethods = [
   ['Phone', site.phone, Phone],
   ['Email', site.email, Mail]
 ];
+
 

@@ -1,8 +1,45 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Phone, Share2 } from 'lucide-react';
 import { site } from '../data/site.js';
 
 export function AppFooter() {
+  const [shareMessage, setShareMessage] = useState('');
+
+  function showShareMessage(message) {
+    setShareMessage(message);
+    window.setTimeout(() => setShareMessage(''), 2200);
+  }
+
+  async function shareWebsite() {
+    const shareData = {
+      title: site.fullName,
+      text: 'View Elim Student Residency student accommodation.',
+      url: window.location.origin
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        showShareMessage('Share sheet opened.');
+        return;
+      }
+
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(shareData.url);
+        showShareMessage('Website link copied.');
+        return;
+      }
+
+      const subject = encodeURIComponent(shareData.title);
+      const body = encodeURIComponent(`${shareData.text}\n\n${shareData.url}`);
+      window.location.href = `mailto:?subject=${subject}&body=${body}`;
+      showShareMessage('Opening email share.');
+    } catch (error) {
+      if (error.name !== 'AbortError') showShareMessage('Unable to share right now.');
+    }
+  }
+
   return (
     <footer className="site-footer">
       <div className="footer-grid">
@@ -22,7 +59,6 @@ export function AppFooter() {
           <h3>Support</h3>
           <Link to="/contact#enquiry">Contact</Link>
           <Link to="/contact#faq">FAQs</Link>
-          <a href={`mailto:${site.email}`}>{site.email}</a>
         </section>
         <section>
           <h3>Contact</h3>
@@ -37,11 +73,24 @@ export function AppFooter() {
         </section>
       </div>
       <div className="footer-bottom">
-        <span>© 2026 Elim student Residency. All rights reserved.</span>
-        <button className="icon-button footer-share" aria-label="Share website">
-          <Share2 size={18} />
-        </button>
+        <span>&copy; 2026 Elim Student Residency. All rights reserved.</span>
+        <div className="footer-actions">
+          {shareMessage && <span className="footer-share-message">{shareMessage}</span>}
+          <button
+            className="icon-button footer-share"
+            aria-label="Share website"
+            onClick={shareWebsite}
+            type="button"
+          >
+            <Share2 size={18} />
+          </button>
+        </div>
       </div>
     </footer>
   );
 }
+
+
+
+
+

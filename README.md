@@ -1,6 +1,6 @@
-# Elim student Residency
+# Elim Student Residency
 
-React + Express website for Elim student Residency.
+React + Express website for Elim Student Residency.
 
 ## Local Setup
 
@@ -144,6 +144,7 @@ Replace these placeholders before launch:
 - Room pricing if prices should be shown
 
 The enquiry form sends to `/api/enquiries`. On Netlify, that route is rewritten to a Netlify Function. In local Express development, it is handled by `server/index.js`.
+
 
 
 

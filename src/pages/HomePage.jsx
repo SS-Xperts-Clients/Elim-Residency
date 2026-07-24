@@ -107,10 +107,10 @@ export function HomePage() {
           <span className="eyebrow">Voices from our Community</span>
           <h2>Students feel secure, supported, and at home.</h2>
           <article>
-            <div className="stars">★★★★★</div>
+            <div className="stars">5/5</div>
             <p>
-              “The environment at Elim is peaceful and secure. It gives students the space to
-              focus, rest, and connect with others.”
+              "The environment at Elim is peaceful and secure. It gives students the space to
+              focus, rest, and connect with others."
             </p>
             <strong>Resident Feedback</strong>
           </article>
@@ -137,3 +137,4 @@ export function HomePage() {
     </>
   );
 }
+

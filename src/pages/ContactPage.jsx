@@ -48,7 +48,7 @@ export function ContactPage() {
       <section className="location-section">
         <div className="location-copy">
           <span className="eyebrow">Location</span>
-          <h2>Find Elim student Residency</h2>
+          <h2>Find Elim Student Residency</h2>
           <p>
             Use the map link to check travel distance, nearby transport, and surrounding services
             around Wonderboom, Pretoria.
@@ -68,4 +68,5 @@ export function ContactPage() {
     </>
   );
 }
+
 

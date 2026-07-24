@@ -88,7 +88,7 @@ export function TourPage() {
   async function sharePreview() {
     const shareUrl = `${window.location.origin}/tour`;
     const title = `${active.name} preview`;
-    const text = `View the ${active.name} space preview at Elim student Residency.`;
+    const text = `View the ${active.name} space preview at Elim Student Residency.`;
 
     try {
       if (navigator.share) {
@@ -231,7 +231,7 @@ export function TourPage() {
           <h2>See the spaces that support study, comfort, and community.</h2>
           <p>
             Select each space to preview the student rooms, shared living, and outdoor
-            relaxation spaces. These can use real photos or 3D-rendered images.
+            relaxation spaces. These previews help you compare the room options and shared spaces before arranging a viewing.
           </p>
         </div>
         <div className="stat-stack">
@@ -244,3 +244,4 @@ export function TourPage() {
     </>
   );
 }
+
