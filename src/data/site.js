@@ -22,7 +22,7 @@ import {
 export const site = {
   name: 'Elim',
   fullName: 'Elim student Residency',
-  email: 'hello@elim.co.za',
+  email: 'support@elimresidency.co.za',
   phone: '+27 73 139 0344',
   address: '89 Braam Pretorius Street, Wonderboom, Pretoria',
   mapsUrl:
