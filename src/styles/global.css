@@ -903,6 +903,25 @@ textarea {
 .site-footer p {
   color: rgba(255, 255, 255, 0.72);
 }
+.footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: white;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.footer-brand img {
+  width: 46px;
+  height: 46px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.94);
+}
 
 .footer-grid {
   display: grid;
@@ -1467,4 +1486,5 @@ textarea {
     display: none;
   }
 }
+
 

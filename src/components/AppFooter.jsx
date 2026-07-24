@@ -27,7 +27,7 @@ export function AppFooter() {
 
       if (navigator.clipboard?.writeText) {
         await navigator.clipboard.writeText(shareData.url);
-        showShareMessage('Website link copied.');
+        showShareMessage('Page link copied.');
         return;
       }
 
@@ -44,7 +44,10 @@ export function AppFooter() {
     <footer className="site-footer">
       <div className="footer-grid">
         <section>
-          <h2>{site.name}</h2>
+          <Link className="footer-brand" to="/" aria-label="Elim Student Residency home">
+            <img src="/elim_student_residency_logo.png" alt="" />
+            <span>{site.fullName}</span>
+          </Link>
           <p>
             Student accommodation designed for study, safety, community, and everyday convenience.
           </p>
@@ -78,7 +81,7 @@ export function AppFooter() {
           {shareMessage && <span className="footer-share-message">{shareMessage}</span>}
           <button
             className="icon-button footer-share"
-            aria-label="Share website"
+            aria-label="Share this page"
             onClick={shareWebsite}
             type="button"
           >
@@ -89,6 +92,8 @@ export function AppFooter() {
     </footer>
   );
 }
+
+
 
 
 

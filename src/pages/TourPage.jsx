@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight, Camera, Expand, Info, Share2 } from 'lucide-reac
 const tourSpaces = [
   {
     name: 'Single Rooms',
+    slug: 'single-rooms',
     floor: 'Student Rooms',
     note: 'Private study, storage, and rest space.',
     images: [
@@ -14,6 +15,7 @@ const tourSpaces = [
   },
   {
     name: 'Sharing Rooms',
+    slug: 'sharing-rooms',
     floor: 'Shared Living',
     note: 'Affordable shared accommodation with essential furniture.',
     images: [
@@ -24,6 +26,7 @@ const tourSpaces = [
   },
   {
     name: 'Outdoor Relaxation',
+    slug: 'outdoor-relaxation',
     floor: 'Courtyard',
     note: 'Outdoor areas for breaks between study sessions.',
     images: [
@@ -34,9 +37,31 @@ const tourSpaces = [
   }
 ];
 
+function getInitialTourSelection() {
+  if (typeof window === 'undefined') return { spaceIndex: 0, imageIndex: 0 };
+
+  const params = new URLSearchParams(window.location.search);
+  const requestedSpaceIndex = tourSpaces.findIndex((space) => space.slug === params.get('space'));
+  const spaceIndex = requestedSpaceIndex >= 0 ? requestedSpaceIndex : 0;
+  const requestedPhoto = Number.parseInt(params.get('photo') || '1', 10);
+  const imageIndex = Number.isNaN(requestedPhoto)
+    ? 0
+    : Math.min(Math.max(requestedPhoto - 1, 0), tourSpaces[spaceIndex].images.length - 1);
+
+  return { spaceIndex, imageIndex };
+}
+
+function getTourShareUrl(spaceIndex, imageIndex) {
+  const url = new URL('/tour', window.location.origin);
+  url.searchParams.set('space', tourSpaces[spaceIndex].slug);
+  url.searchParams.set('photo', String(imageIndex + 1));
+  return url.toString();
+}
+
 export function TourPage() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const initialSelection = getInitialTourSelection();
+  const [activeIndex, setActiveIndex] = useState(initialSelection.spaceIndex);
+  const [activeImageIndex, setActiveImageIndex] = useState(initialSelection.imageIndex);
   const [actionMessage, setActionMessage] = useState('');
   const [isSelectorOpen, setIsSelectorOpen] = useState(false);
   const active = tourSpaces[activeIndex];
@@ -86,22 +111,23 @@ export function TourPage() {
   }
 
   async function sharePreview() {
-    const shareUrl = `${window.location.origin}/tour`;
-    const title = `${active.name} preview`;
-    const text = `View the ${active.name} space preview at Elim Student Residency.`;
+    const shareUrl = getTourShareUrl(activeIndex, activeImageIndex);
+    const title = `Elim Student Residency - ${active.name} preview`;
+    const text = `I am sharing the ${active.name} preview from Elim Student Residency. It opens directly to this ${active.name.toLowerCase()} view for secure student accommodation in Wonderboom, Pretoria.`;
+    const message = `${title}\n\n${text}\n\n${shareUrl}`;
 
     try {
       if (navigator.share) {
         await navigator.share({ title, text, url: shareUrl });
-        showActionMessage('Share sheet opened.');
+        showActionMessage(`${active.name} share opened.`);
         return;
       }
 
-      await navigator.clipboard.writeText(shareUrl);
-      showActionMessage('Preview link copied.');
+      await navigator.clipboard.writeText(message);
+      showActionMessage(`${active.name} share details copied.`);
     } catch (error) {
       const subject = encodeURIComponent(title);
-      const body = encodeURIComponent(`${text}\n\n${shareUrl}`);
+      const body = encodeURIComponent(message);
       window.location.href = `mailto:?subject=${subject}&body=${body}`;
       showActionMessage('Opening email share.');
     }
@@ -244,4 +270,7 @@ export function TourPage() {
     </>
   );
 }
+
+
+
 
