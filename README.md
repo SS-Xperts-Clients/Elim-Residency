@@ -56,12 +56,12 @@ Set these environment variables in Netlify under Site configuration > Environmen
 - `SMTP_PORT`
 - `SMTP_USER`
 - `SMTP_PASS`
-- `MAIL_TO`
+- `MAIL_TO` = `support@elimresidency.co.za`
 
 Optional variables:
 
 - `SMTP_SECURE`
-- `MAIL_FROM`
+- `MAIL_FROM` = `Elim Residency <no-reply@elimresidency.co.za>`
 
 ## Cloudflare Pages Deployment
 
@@ -84,8 +84,8 @@ For the enquiry form on Cloudflare, configure Cloudflare Email Service and set t
 
 - `CLOUDFLARE_ACCOUNT_ID`
 - `CLOUDFLARE_EMAIL_API_TOKEN`
-- `MAIL_FROM`
-- `MAIL_TO`
+- `MAIL_FROM` = `no-reply@elimresidency.co.za`
+- `MAIL_TO` = `support@elimresidency.co.za`
 
 `MAIL_FROM` must be an address on a Cloudflare Email Sending verified domain. `CLOUDFLARE_EMAIL_API_TOKEN` needs permission to send email for the account. Wrangler also uses a local/deploy-time `CLOUDFLARE_API_TOKEN` when deploying from the CLI.
 
@@ -120,7 +120,7 @@ Required variables:
 - `SMTP_PORT`
 - `SMTP_USER`
 - `SMTP_PASS`
-- `MAIL_TO`
+- `MAIL_TO` = `support@elimresidency.co.za`
 
 Optional variables:
 
@@ -128,7 +128,7 @@ Optional variables:
 - `NODE_ENV`
 - `CLIENT_ORIGIN`
 - `SMTP_SECURE`
-- `MAIL_FROM`
+- `MAIL_FROM` = `Elim Residency <no-reply@elimresidency.co.za>`
 
 ## Content Updates
 
@@ -138,11 +138,12 @@ Update visible site content in:
 
 Replace these placeholders before launch:
 
-- `site.email`
 - `site.phone`
 - `site.address`
 - Room image URLs
 - Room pricing if prices should be shown
 
 The enquiry form sends to `/api/enquiries`. On Netlify, that route is rewritten to a Netlify Function. In local Express development, it is handled by `server/index.js`.
+
+
 
