@@ -17,7 +17,7 @@ export function AppHeader() {
   return (
     <header className="site-header">
       <Link className="brand" to="/" aria-label="Elim home" onClick={closeMenu}>
-        <img src="/elim_student_residency_logo.png" alt="" />
+        <img src="/logo.png" alt="" />
         <span>{site.name}</span>
       </Link>
       <nav className="desktop-nav" aria-label="Primary navigation">
@@ -61,3 +61,4 @@ export function AppHeader() {
     </header>
   );
 }
+

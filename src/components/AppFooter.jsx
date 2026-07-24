@@ -45,7 +45,7 @@ export function AppFooter() {
       <div className="footer-grid">
         <section>
           <Link className="footer-brand" to="/" aria-label="Elim Student Residency home">
-            <img src="/elim_student_residency_logo.png" alt="" />
+            <img src="/logo.png" alt="" />
             <span>{site.fullName}</span>
           </Link>
           <p>
@@ -92,6 +92,7 @@ export function AppFooter() {
     </footer>
   );
 }
+
 
 
 
